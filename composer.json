@@ -1,6 +1,7 @@
 {
     "name": "gathercontent/laravel-fractal",
-    "description": "",
+    "description": "A Laravel Service Provider for Fractal",
+    "license": "MIT",
     "authors": [
         {
             "name": "Andrew Cairns",
@@ -14,6 +15,10 @@
     "require-dev":{
         "illuminate/support": "4.1.*"
     },
+    "keywords": [
+        "laravel",
+        "fractal"
+    ],
     "autoload": {
         "psr-0": {
             "GatherContent\\LaravelFractal\\": "src/"
