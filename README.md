@@ -57,7 +57,7 @@ Formatting a single item:
 ```php
 // routes.php
 Route::get('/me', array('before' => 'auth', function () {
-    return Fractal::item(Auth::user(), new Acme\Users\UserTransformer);
+    return Fractal::item(Auth::user(), new UserTransformer);
 }));
 ```
 
@@ -66,7 +66,7 @@ Formatting a collection:
 ```php
 // routes.php
 Route::get('/comments', function () {
-    return Fractal::item(Acme\Comments\Comment::all(), new Acme\Comments\CommentTransformer);
+    return Fractal::item(Comment::all(), new CommentTransformer);
 });
 ```
 
@@ -75,9 +75,9 @@ Paginating a collection:
 ```php
 // routes.php
 Route::get('/comments', function () {
-    $paginator = Acme\Comments\Comment::paginate();
+    $paginator = Comment::paginate();
     $comments = $paginator->getCollection();
 
-    return Fractal::item($comments, new Acme\Comments\CommentTransformer, $paginator);
+    return Fractal::item($comments, new CommentTransformer, $paginator);
 });
 ```
