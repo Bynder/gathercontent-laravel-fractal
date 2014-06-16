@@ -3,12 +3,13 @@
 use Response;
 
 use League\Fractal\Manager;
+use League\Fractal\TransformerAbstract;
 use League\Fractal\Resource\Item;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\ResourceInterface;
-use League\Fractal\TransformerAbstract;
-use League\Fractal\Pagination\PaginatorInterface;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+
+use Illuminate\Pagination\Paginator as IlluminatePaginator;
 
 class LaravelFractalService
 {
@@ -25,7 +26,7 @@ class LaravelFractalService
         return $this->buildResponse($resource);
     }
 
-    public function collection($items, TransformerAbstract $transformer, PaginatorInterface $paginator = null)
+    public function collection($items, TransformerAbstract $transformer, IlluminatePaginator $paginator = null)
     {
         $resource = new Collection($items, $transformer);
         
