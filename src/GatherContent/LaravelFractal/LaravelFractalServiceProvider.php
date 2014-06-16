@@ -34,7 +34,10 @@ class LaravelFractalServiceProvider extends ServiceProvider
             $includes = $app['request']->input($inputkey);
             
             $manager = new Manager;
-            $manager->parseIncludes($includes);
+
+            if ($includes) {
+                $manager->parseIncludes($includes);
+            }
             
             return new LaravelFractalService($manager);
         });
