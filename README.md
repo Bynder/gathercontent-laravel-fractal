@@ -66,7 +66,7 @@ Formatting a collection:
 ```php
 // routes.php
 Route::get('/comments', function () {
-    return Fractal::item(Comment::all(), new CommentTransformer);
+    return Fractal::collection(Comment::all(), new CommentTransformer);
 });
 ```
 
@@ -78,6 +78,6 @@ Route::get('/comments', function () {
     $paginator = Comment::paginate();
     $comments = $paginator->getCollection();
 
-    return Fractal::item($comments, new CommentTransformer, $paginator);
+    return Fractal::collection($comments, new CommentTransformer, $paginator);
 });
 ```
