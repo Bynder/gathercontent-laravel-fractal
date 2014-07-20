@@ -20,6 +20,11 @@ class LaravelFractalService
         $this->manager = $manager;
     }
 
+    public function getManager()
+    {
+        return $this->manager;
+    }
+
     public function item($item, TransformerAbstract $transformer)
     {
         $resource = new Item($item, $transformer);
