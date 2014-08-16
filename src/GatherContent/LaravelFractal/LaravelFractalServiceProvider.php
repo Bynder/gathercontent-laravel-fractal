@@ -38,8 +38,10 @@ class LaravelFractalServiceProvider extends ServiceProvider
             if ($includes) {
                 $manager->parseIncludes($includes);
             }
-            
-            return new LaravelFractalService($manager);
+
+            $paginator = $app['config']->get('fractal::paginator_adapter');
+
+            return new LaravelFractalService($manager, $paginator);
         });
 	}
 

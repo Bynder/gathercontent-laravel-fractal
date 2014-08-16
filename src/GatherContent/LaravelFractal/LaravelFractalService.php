@@ -14,10 +14,12 @@ use Illuminate\Pagination\Paginator as IlluminatePaginator;
 class LaravelFractalService
 {
     private $manager;
+    private $paginatorAdapter;
 
-    public function __construct(Manager $manager)
+    public function __construct(Manager $manager, $paginatorAdapter)
     {
         $this->manager = $manager;
+        $this->paginatorAdapter = $paginatorAdapter;
     }
 
     public function getManager()
@@ -36,7 +38,7 @@ class LaravelFractalService
         $resource = new Collection($items, $transformer);
         
         if ($paginator) {
-            $adapter = new IlluminatePaginatorAdapter($paginator);
+            $adapter = new $this->paginatorAdapter($paginator);
             $resource->setPaginator($adapter);
         }
         
