@@ -31,15 +31,15 @@ class LaravelFractalService
         return $this->buildResponse($resource);
     }
 
-    public function collection($items, TransformerAbstract $transformer, IlluminatePaginator $paginator = null, IlluminatePaginatorAdapter $adapter = null)
+    public function collection($items, TransformerAbstract $transformer, IlluminatePaginatorAdapter $adapter = null)
     {
-        $resource = new Collection($items, $transformer);
-        
-        if ($paginator) {
-            $this->paginateCollection($resource, $paginator, $adapter);
+        $resources = new Collection($items, $transformer);
+
+        if ($items instanceof IlluminatePaginator) {
+            $this->paginateCollection($resources, $items, $adapter);
         }
         
-        return $this->buildResponse($resource);
+        return $this->buildResponse($resources);
     }
 
     private function paginateCollection(Collection $collection, IlluminatePaginator $paginator, IlluminatePaginatorAdapter $adapter = null)
