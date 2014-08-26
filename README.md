@@ -70,14 +70,22 @@ Route::get('/comments', function () {
 });
 ```
 
-Paginating a collection:
+Returning a paginated collection:
 
 ```php
 // routes.php
 Route::get('/comments', function () {
-    $paginator = Comment::paginate();
-    $comments = $paginator->getCollection();
+    return Fractal::collection(Comment::paginate(), new CommentTransformer);
+});
+```
 
-    return Fractal::collection($comments, new CommentTransformer, $paginator);
+Using a custom pagination adapter:
+
+```php
+// routes.php
+Route::get('/comments', function () {
+    $comments = Comment::paginate();
+    $adapter = new MyIlluminatePaginationAdapter($comments);
+    return Fractal::collection($comments, new CommentTransformer, $adapter);
 });
 ```
