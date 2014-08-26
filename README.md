@@ -2,13 +2,15 @@
 
 A Laravel Service Provider for [League/Fractal](http://fractal.thephpleague.com).
 
+---
+
 ## Installation
 
 Add laravel-fractal to your composer.json file:
 
-```
+```json
 "require": {
-    "gathercontent/laravel-fractal": "dev-master"
+    "gathercontent/laravel-fractal": "~1.0"
 }
 ```
 
@@ -20,7 +22,7 @@ $ composer update gathercontent/laravel-fractal
 
 ### Registering the Package
 
-Register the service provider within the ```providers``` array found in ```app/config/app.php```:
+Register the service provider within the `providers` array found in `app/config/app.php`:
 
 ```php
 'providers' => array(
@@ -29,7 +31,7 @@ Register the service provider within the ```providers``` array found in ```app/c
 )
 ```
 
-Add an alias within the ```aliases``` array found in ```app/config/app.php```:
+Add an alias within the `aliases` array found in `app/config/app.php`:
 
 
 ```php
@@ -44,7 +46,7 @@ Add an alias within the ```aliases``` array found in ```app/config/app.php```:
 To override the default configuration, you can publish the config files to your application.
 Artisan can do this automatically for you via the command line:
 
-```
+```bash
 $ php artisan config:publish gathercontent/laravel-fractal
 ```
 
