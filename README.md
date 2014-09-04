@@ -10,7 +10,7 @@ Add laravel-fractal to your composer.json file:
 
 ```json
 "require": {
-    "gathercontent/laravel-fractal": "~1.0"
+    "gathercontent/laravel-fractal": "~0.1"
 }
 ```
 
