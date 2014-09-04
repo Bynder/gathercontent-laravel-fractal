@@ -1,5 +1,6 @@
 <?php namespace GatherContent\LaravelFractal;
 
+use Closure;
 use Response;
 
 use League\Fractal\Manager;
@@ -25,15 +26,24 @@ class LaravelFractalService
         return $this->manager;
     }
 
-    public function item($item, TransformerAbstract $transformer)
+    public function item($item, TransformerAbstract $transformer, Closure $callback = null)
     {
         $resource = new Item($item, $transformer);
+        
+        if (! is_null($callback)) {
+            call_user_func($callback, $resource);
+        }
+
         return $this->buildResponse($resource);
     }
 
-    public function collection($items, TransformerAbstract $transformer, IlluminatePaginatorAdapter $adapter = null)
+    public function collection($items, TransformerAbstract $transformer, Closure $callback = null, IlluminatePaginatorAdapter $adapter = null)
     {
         $resources = new Collection($items, $transformer);
+
+        if (! is_null($callback)) {
+            call_user_func($callback, $resources);
+        }
 
         if ($items instanceof IlluminatePaginator) {
             $this->paginateCollection($resources, $items, $adapter);
