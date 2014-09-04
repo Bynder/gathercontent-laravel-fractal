@@ -72,6 +72,17 @@ Route::get('/comments', function () {
 });
 ```
 
+Adding meta data:
+
+```php
+// routes.php
+Route::get('/comments', function () {
+    return Fractal::collection(Comment::all(), new CommentTransformer, function ($resources) {
+        $resources->addMetaValue('foo', 'bar');
+    });
+});
+```
+
 Returning a paginated collection:
 
 ```php
@@ -88,6 +99,6 @@ Using a custom pagination adapter:
 Route::get('/comments', function () {
     $comments = Comment::paginate();
     $adapter = new MyIlluminatePaginationAdapter($comments);
-    return Fractal::collection($comments, new CommentTransformer, $adapter);
+    return Fractal::collection($comments, new CommentTransformer, null, $adapter);
 });
 ```
