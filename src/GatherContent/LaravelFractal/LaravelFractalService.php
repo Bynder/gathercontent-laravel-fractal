@@ -56,6 +56,7 @@ class LaravelFractalService
     {
         if (is_null($adapter)) {
             $adapter = new IlluminatePaginatorAdapter($paginator);
+            $adapter->appends(\Request::query());
         }
         
         $collection->setPaginator($adapter);
