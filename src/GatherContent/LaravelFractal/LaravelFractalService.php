@@ -9,6 +9,7 @@ use League\Fractal\Resource\Item;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\ResourceInterface;
 use League\Fractal\Pagination\PaginatorInterface;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 use Illuminate\Pagination\Paginator as IlluminatePaginator;
 
@@ -64,6 +65,7 @@ class LaravelFractalService
     private function buildResponse(ResourceInterface $resource)
     {
         $data = $this->manager->createData($resource);
+        
         return Response::make($data->toArray());
     }
 }
