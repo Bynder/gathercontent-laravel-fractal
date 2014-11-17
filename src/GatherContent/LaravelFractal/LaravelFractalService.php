@@ -8,6 +8,7 @@ use League\Fractal\TransformerAbstract;
 use League\Fractal\Resource\Item;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\ResourceInterface;
+use League\Fractal\Pagination\PaginatorInterface;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 use Illuminate\Pagination\Paginator as IlluminatePaginator;
@@ -37,7 +38,7 @@ class LaravelFractalService
         return $this->buildResponse($resource);
     }
 
-    public function collection($items, TransformerAbstract $transformer, Closure $callback = null, IlluminatePaginatorAdapter $adapter = null)
+    public function collection($items, TransformerAbstract $transformer, Closure $callback = null, PaginatorInterface $adapter = null)
     {
         $resources = new Collection($items, $transformer);
 
@@ -52,7 +53,7 @@ class LaravelFractalService
         return $this->buildResponse($resources);
     }
 
-    private function paginateCollection(Collection $collection, IlluminatePaginator $paginator, IlluminatePaginatorAdapter $adapter = null)
+    private function paginateCollection(Collection $collection, IlluminatePaginator $paginator, PaginatorInterface $adapter = null)
     {
         if (is_null($adapter)) {
             $adapter = new IlluminatePaginatorAdapter($paginator);
@@ -64,6 +65,7 @@ class LaravelFractalService
     private function buildResponse(ResourceInterface $resource)
     {
         $data = $this->manager->createData($resource);
+        
         return Response::make($data->toArray());
     }
 }

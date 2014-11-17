@@ -78,7 +78,7 @@ Adding meta data:
 // routes.php
 Route::get('/comments', function () {
     return Fractal::collection(Comment::all(), new CommentTransformer, function ($resources) {
-        $resources->addMetaValue('foo', 'bar');
+        $resources->setMetaValue('foo', 'bar');
     });
 });
 ```
