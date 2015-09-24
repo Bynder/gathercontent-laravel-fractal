@@ -17,7 +17,7 @@ Add laravel-fractal to your composer.json file:
 Get composer to install the package:
 
 ```
-$ composer update gathercontent/laravel-fractal
+$ composer require gathercontent/laravel-fractal
 ```
 
 ### Registering the Package
