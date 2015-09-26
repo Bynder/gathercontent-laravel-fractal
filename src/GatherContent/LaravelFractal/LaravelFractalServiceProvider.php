@@ -19,7 +19,7 @@ class LaravelFractalServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		$this->package('gathercontent/laravel-fractal', 'fractal');
+
 	}
 
 	/**
