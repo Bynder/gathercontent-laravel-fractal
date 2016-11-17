@@ -19,7 +19,7 @@ class LaravelFractalServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		$this->package('gathercontent/laravel-fractal', 'fractal');
+
 	}
 
 	/**
@@ -32,13 +32,13 @@ class LaravelFractalServiceProvider extends ServiceProvider
 		$this->app->singleton('fractal', function ($app) {
             $inputkey = $app['config']->get('fractal::include_key');
             $includes = $app['request']->input($inputkey);
-            
+
             $manager = new Manager;
 
             if ($includes) {
                 $manager->parseIncludes($includes);
             }
-            
+
             return new LaravelFractalService($manager);
         });
 	}
