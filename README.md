@@ -10,7 +10,7 @@ Add laravel-fractal to your composer.json file:
 
 ```json
 "require": {
-    "gathercontent/laravel-fractal": "~0.1"
+    "gathercontent/laravel-fractal": "~1.0"
 }
 ```
 
@@ -47,7 +47,7 @@ To override the default configuration, you can publish the config files to your 
 Artisan can do this automatically for you via the command line:
 
 ```bash
-$ php artisan config:publish gathercontent/laravel-fractal
+$ php artisan vendor:publish
 ```
 
 ## Usage
