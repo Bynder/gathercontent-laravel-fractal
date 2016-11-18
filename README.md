@@ -27,7 +27,7 @@ Register the service provider within the `providers` array found in `app/config/
 ```php
 'providers' => array(
     // ...
-    'GatherContent\LaravelFractal\LaravelFractalServiceProvider'
+    GatherContent\LaravelFractal\LaravelFractalServiceProvider::class
 )
 ```
 
@@ -37,7 +37,7 @@ Add an alias within the `aliases` array found in `app/config/app.php`:
 ```php
 'aliases' => array(
     // ...
-    'Fractal' => 'GatherContent\LaravelFractal\LaravelFractalFacade',
+    'Fractal' => GatherContent\LaravelFractal\LaravelFractalFacade::class,
 )
 ```
 
