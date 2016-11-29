@@ -32,7 +32,7 @@ class LaravelFractalServiceProvider extends ServiceProvider
 	public function register()
 	{
 		$this->app->singleton('fractal', function ($app) {
-            $inputkey = $app['config']->get('fractal::include_key');
+            $inputkey = config('fractal.include_key');
             $includes = $app['request']->input($inputkey);
 
             $manager = new Manager;
